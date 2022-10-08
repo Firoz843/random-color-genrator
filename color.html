@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+				<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+				
+				<title>Random colors generator</title>
+				
+				<link rel="preconnect" href="https://fonts.googleapis.com">
+				
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+				<style>
+								*{
+												margin: 0px;
+												padding: 0px;
+												box-sizing: border-box;
+								}
+								
+								body{
+												display: flex;
+												justify-content: center;
+												align-items: center;
+												flex-wrap: wrap;
+												min-height: 100vh;
+												font-family: 'Outfit', sans-serif;
+								}
+								
+								div{
+												width : 25%;
+												height: 200px;
+												color: #fff;
+												padding-top: 80px;
+												text-align: center;
+								}
+								@media(max-width: 768px){
+								div{
+								width: 100%;
+								}
+								}
+				</style>
+</head>
+<body>
+				
+				
+				
+				<script>
+									function componentToHex(c) {
+  var hex = c.toString(16);
+  return hex.length == 1 ? "0" + hex : hex;
+}
+
+							function rgbToHex(r, g, b) {
+  return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}
+
+
+								function hexToRgb(hex) {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  } : null;
+}
+							
+							
+
+function GenRGB() {
+				var ran = Math.floor(Math.random()*255);
+				return ran;
+}
+
+for(let i = 0; i < 30; i++){
+				var box = document.createElement("div");
+				var HexCode = document.createElement("h1");
+				var RgbCode = document.createElement("p");
+				
+				HexCode.innerHTML = rgbToHex(GenRGB(), GenRGB(), GenRGB());
+				var rgb = hexToRgb(HexCode.innerHTML);
+				RgbCode.innerHTML = "rgb("+rgb.r+", "+rgb.g+", "+rgb.b+");";
+				
+				
+				box.setAttribute("style", "background: "+HexCode.innerHTML+";");
+				document.body.appendChild(box);
+				box.appendChild(HexCode);
+				box.appendChild(RgbCode);
+				
+}	
+				</script>
+				
+</body>
+</html>
